@@ -2,17 +2,20 @@ import './PhotoTile.css';
 import { PictureTile } from '../PictureTile/PictureTile';
 
 type PhotoTileProps = {
-  mini_file?: string;
-  big_file?: string;
+  file: string;
   title?: string;
   date?: string;
   description?: string;
+  openSliderView: (photoFile: string) => void;
 };
 
 export const PhotoTile = (props: PhotoTileProps) => {
   return (
-    <div className="photo_tile">
-      <PictureTile />
+    <div
+      className="photo_tile"
+      onClick={() => props.openSliderView(props.file)}
+    >
+      <PictureTile bcolor={props.file} />
       <div className="photo_info">
         <div className="photo_title">{props.title}</div>
         <div className="photo_date">{props.date}</div>

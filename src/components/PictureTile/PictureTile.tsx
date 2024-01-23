@@ -6,11 +6,16 @@ type PictureTileProps = {
   title?: string;
   date?: string;
   description?: string;
+  bcolor?: string;
 };
 
 export const PictureTile = (props: PictureTileProps) => {
   return (
     // set photo image as the background
-    <div className="photo_tile" style={{ backgroundColor: `lightgrey` }} />
+    <div
+      className="picture_tile"
+      style={{ backgroundColor: `${props.bcolor}` }}
+    />
+    // <div className="picture_tile" />
   );
 };

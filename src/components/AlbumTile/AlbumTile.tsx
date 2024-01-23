@@ -5,13 +5,14 @@ type AlbumTileProps = {
   title: string;
   description?: string;
   date?: string;
+  cover?: string;
   openGallery: (galleryName: string) => void;
 };
 
 export const AlbumTile = (props: AlbumTileProps) => {
   return (
     <div className="album_tile" onClick={() => props.openGallery(props.title)}>
-      <PictureTile />
+      <PictureTile bcolor={props.cover} />
       <div className="album_info">
         <div className="album_name">{props.title}</div>
         <div className="album_date">{props.date}</div>

@@ -1,0 +1,31 @@
+.photo_tile {
+  width: 200px;
+  height: 125px;
+  background-color: brown;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.album_tile {
+  width: 220px;
+  height: auto;
+  background: lightcyan;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.photo_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo_title {
+  text-align: right;
+  font-weight: 700;
+  padding: 5px 2px 2px 5px;
+}
+
+.photo_description {
+  text-align: right;
+  padding: 0 2px 2px 0;
+}

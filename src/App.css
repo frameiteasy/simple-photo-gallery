@@ -6,9 +6,10 @@
 }
 
 #app_container {
-  width: 100%;
+  width: 80%;
   height: 100%;
   background-color: yellow;
+  margin: auto;
 }
 
 #app_header {
@@ -35,5 +36,10 @@
 }
 
 #app_footer {
+  width: 80%;
   background-color: pink;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
 }

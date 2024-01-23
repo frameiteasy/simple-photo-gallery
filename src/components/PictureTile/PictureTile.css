@@ -1,0 +1,7 @@
+.photo_tile {
+  width: 200px;
+  height: 125px;
+  background-color: brown;
+  margin: auto;
+  border-radius: 10px;
+}

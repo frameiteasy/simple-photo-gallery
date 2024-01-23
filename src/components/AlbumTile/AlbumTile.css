@@ -1,0 +1,23 @@
+.album_tile {
+  width: 220px;
+  height: auto;
+  background: lightcyan;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.album_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.album_name {
+  text-align: right;
+  font-weight: 700;
+  padding: 5px 2px 2px 5px;
+}
+
+.album_description {
+  text-align: right;
+  padding: 0 2px 2px 0;
+}

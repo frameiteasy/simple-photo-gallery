@@ -2,6 +2,13 @@ import { AlbumTile } from '../AlbumTile/AlbumTile';
 import './Albums.css';
 import { useAlbums } from './useAlbums';
 
+/* TODO
+    create an app context:
+      - array of albums
+      - arry of photos
+    read a list of albums from the server and save in the context
+*/
+
 export const Albums = () => {
   const { openGallery } = useAlbums();
   return (

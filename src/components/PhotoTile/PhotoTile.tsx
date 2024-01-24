@@ -1,6 +1,11 @@
 import './PhotoTile.css';
 import { PictureTile } from '../PictureTile/PictureTile';
 
+/*
+  When click on the tile the slider view is open with the current photo
+  and the user can go forth and back
+*/
+
 type PhotoTileProps = {
   file: string;
   title?: string;

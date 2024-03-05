@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "title": "Album 1",
+        "date": "date 1",
+        "description": "This is album 1",
+        "cover": "red"
+    },
+    {
+        "id": 2,
+        "title": "Album 2",
+        "date": "date 2",
+        "description": "This is album 2",
+        "cover": "yellow"
+    },
+    {
+        "id": 3,
+        "title": "Album 3",
+        "date": "date 3",
+        "description": "This is album 3",
+        "cover": "pink"
+    },
+    {
+        "id": 4,
+        "title": "Album 4",
+        "date": "date 4",
+        "description": "This is album 4",
+        "cover": "green"
+    },
+    {
+        "id": 5,
+        "title": "Album 5",
+        "date": "date 5",
+        "description": "This is album 5",
+        "cover": "blue"
+    },
+    {
+        "id": 6,
+        "title": "Album 6",
+        "date": "date 6",
+        "description": "This is album 6",
+        "cover": "purple"
+    },
+    {
+        "id": 7,
+        "title": "Album 7",
+        "date": "date 7",
+        "description": "This is album 7",
+        "cover": "grey"
+    },
+    {
+        "id": 8,
+        "title": "Album 8",
+        "date": "date 8",
+        "description": "This is album 8",
+        "cover": "brown"
+    }
+]

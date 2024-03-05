@@ -1,18 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Albums } from './components/Albums/Albums';
 import { Gallery } from './components/Gallery/Gallery';
 import { AppContext, AppDataType } from './AppContext';
+import albumsData from './data/albums.json';
 
-const initAppData = (): AppDataType => ({
-  albums: [
-    { title: 'Album 1', date: 'ala ma kota', description: 'album testowy' },
-  ],
-});
+const initAppData = (): Array<Album> => {
+  const albums = albumsData;
+  return albums
+};
 
 function App() {
-  const [context, setContext] = useState<AppDataType>(initAppData());
+  console.log('App');
+  const [context, setContext] = useState<AppDataType>({});
+
+  const albums: Array<Album> = albumsData;
+
+  useEffect(() => {
+    setContext({albums: initAppData()});
+  }, []);
 
   return (
     <AppContext.Provider value={{ context, setContext }}>
@@ -23,8 +30,8 @@ function App() {
         </header>
         <div id="app_content">
           <Routes>
-            <Route path="/" element={<Albums />}></Route>
-            <Route path="/albums" element={<Albums />}></Route>
+            <Route path="/" element={<Albums albums={albums}/>}></Route>
+            <Route path="/albums" element={<Albums albums={albums}/>}></Route>
             <Route path="/gallery/:albumName" element={<Gallery />}></Route>
           </Routes>
         </div>

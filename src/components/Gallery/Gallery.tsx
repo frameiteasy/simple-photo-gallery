@@ -13,8 +13,8 @@ export const Gallery = () => {
   const { openSliderView } = useGallery();
   const { context, setContext } = useAppContext();
 
-  console.log('context', context);
-  console.log('setContext', setContext);
+  // console.log('context', context);
+  // console.log('setContext', setContext);
 
   return (
     <div id="gallery">

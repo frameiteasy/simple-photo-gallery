@@ -32,7 +32,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Albums albums={albums}/>}></Route>
             <Route path="/albums" element={<Albums albums={albums}/>}></Route>
-            <Route path="/gallery/:albumName" element={<Gallery />}></Route>
+            <Route path="/gallery/:albumid" element={<Gallery />}></Route>
           </Routes>
         </div>
         <div id="app_footer">footer</div>

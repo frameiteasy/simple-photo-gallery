@@ -14,13 +14,14 @@ type AlbumsProps = {
 };
 
 export const Albums = (props: AlbumsProps) => {
-  const { openGallery, createKey } = useAlbums();
+  const { openGallery } = useAlbums();
   const { albums } = props;
 
   const albumTiles = albums.map((item, index) => {
     return (
       <AlbumTile 
-        key={createKey(index, item.title)}
+        id={item.id}
+        key={item.id}
         title={item.title}
         description={item.description}
         cover={item.cover}

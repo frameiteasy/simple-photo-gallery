@@ -11,33 +11,25 @@ import { useGallery } from './useGallery';
 
 export const Gallery = () => {
   const { openSliderView } = useGallery();
-  const { context, setContext } = useAppContext();
+  const { getPhotos} = useGallery();
 
-  // console.log('context', context);
-  // console.log('setContext', setContext);
+  const photos: Photo[] | undefined = getPhotos();
+
+  const photoTiles = photos?.map((item, index) => {
+    return (
+      <PhotoTile 
+        key={index}
+        title={item.title}
+        description={item.description}
+        file={item.file}
+        openSliderView={openSliderView}
+      />
+    )
+  });
 
   return (
     <div id="gallery">
-      <PhotoTile title="Photo 1" file="pink" openSliderView={openSliderView} />
-      <PhotoTile title="Photo 2" file="green" openSliderView={openSliderView} />
-      <PhotoTile
-        title="Photo 3"
-        file="yellow"
-        openSliderView={openSliderView}
-      />
-      <PhotoTile title="Photo 4" file="blue" openSliderView={openSliderView} />
-      <PhotoTile
-        title="Photo 5"
-        file="orange"
-        openSliderView={openSliderView}
-      />
-      <PhotoTile title="Photo 6" file="red" openSliderView={openSliderView} />
-      <PhotoTile
-        title="Photo 7"
-        file="purple"
-        openSliderView={openSliderView}
-      />
-      <PhotoTile title="Photo 8" file="grey" openSliderView={openSliderView} />
+      {photoTiles}
     </div>
   );
 };

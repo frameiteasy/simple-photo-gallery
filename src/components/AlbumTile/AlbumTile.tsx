@@ -1,17 +1,22 @@
+import { useNavigate } from 'react-router-dom';
 import { PictureTile } from '../PictureTile/PictureTile';
 import './AlbumTile.css';
 
 type AlbumTileProps = {
+  id: number,
   title: string;
   description?: string;
   date?: string;
   cover?: string;
-  openGallery: (galleryName: string) => void;
+  openGallery: (albumid: number) => void;
 };
 
 export const AlbumTile = (props: AlbumTileProps) => {
+  const navigate = useNavigate();
+  const galleryUrl = '/gallery/' + props.id;
+
   return (
-    <div className="album_tile" onClick={() => props.openGallery(props.title)}>
+    <div className="album_tile" onClick={() => navigate(galleryUrl)}>
       <PictureTile bcolor={props.cover} />
       <div className="album_info">
         <div className="album_name">{props.title}</div>

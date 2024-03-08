@@ -1,19 +1,18 @@
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+
 type ReturnUseAlbumsType = {
-  openGallery: (galleryName: string) => void;
-  createKey: (index: number, title: string) => string;
+  openGallery: (albumid: number) => void
 };
 
 export const useAlbums = (): ReturnUseAlbumsType => {
-  const openGallery = (galleryName: string): void => {
-    console.log('open gallery ', galleryName);
+  const openGallery = (albumid: number): void => {
+
+    console.log('open gallery ', albumid);
+    // onClick={() => navigate(galleryUrl)}
   };
 
-  const createKey = (index: number, title: string): string => {
-    return index + title.replace(/\s+/g, '');
-  }
-
   return {
-    openGallery,
-    createKey
+    openGallery
   };
 };

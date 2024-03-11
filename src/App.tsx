@@ -1,25 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Albums } from './components/Albums/Albums';
 import { Gallery } from './components/Gallery/Gallery';
 import { AppContext, AppDataType } from './AppContext';
-import albumsData from './data/albums.json';
-
-const initAppData = (): Array<Album> => {
-  const albums = albumsData;
-  return albums
-};
+import { useDataLoader } from './data/useDataLoader';
 
 function App() {
   console.log('App');
-  const [context, setContext] = useState<AppDataType>({});
+  const {getAlbumsFile, getPhotosFile} = useDataLoader();
 
-  const albums: Array<Album> = albumsData;
+  const getAlbumId = (): string | undefined => {
+    const galleryPath = window.location.href.split('/');
+    const albumid = galleryPath.pop();
+    return albumid;
+  }
 
-  useEffect(() => {
-    setContext({albums: initAppData()});
-  }, []);
+  const [context, setContext] = useState<AppDataType>(
+    {
+      albums: getAlbumsFile(),
+      getAlbums: getAlbumsFile, 
+      getPhotos: getPhotosFile,
+      getAlbumId
+    }
+  );
 
   return (
     <AppContext.Provider value={{ context, setContext }}>
@@ -30,8 +34,8 @@ function App() {
         </header>
         <div id="app_content">
           <Routes>
-            <Route path="/" element={<Albums albums={albums}/>}></Route>
-            <Route path="/albums" element={<Albums albums={albums}/>}></Route>
+            <Route path="/" element={<Albums albums={getAlbumsFile()}/>}></Route>
+            <Route path="/albums" element={<Albums albums={getAlbumsFile()}/>}></Route>
             <Route path="/gallery/:albumid" element={<Gallery />}></Route>
           </Routes>
         </div>

@@ -10,10 +10,12 @@ import { useGallery } from './useGallery';
 */
 
 export const Gallery = () => {
+  const { context } = useAppContext();
   const { openSliderView } = useGallery();
-  const { getPhotos} = useGallery();
+  // const { getPhotos} = useGallery();
+  const albumid: string | undefined = context.getAlbumId();
 
-  const photos: Photo[] | undefined = getPhotos();
+  const photos: Photo[] | undefined = context.getPhotos(albumid);
 
   const photoTiles = photos?.map((item, index) => {
     return (

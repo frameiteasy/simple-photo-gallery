@@ -1,10 +1,12 @@
 import { createContext, useContext } from 'react';
 
+
 export type AppDataType = {
   albums: Album[];
   getAlbumId: () => string | undefined;
   getAlbums: () => Album[];
   getPhotos: (albumid: string | undefined) => Photo[];
+  openGallery: (photos: Photo[], currentPhoto: number | undefined) => JSX.Element;
 };
 
 export type AppContextType = {
@@ -17,7 +19,8 @@ export const AppContext = createContext<AppContextType>(
     albums: [],
     getAlbumId: () => undefined,
     getAlbums: () => [],
-    getPhotos: (undefined) => []
+    getPhotos: (undefined) => [],
+    openGallery: ([], undfined) => (<div></div>)
   }});
 
 export const useAppContext = () => useContext(AppContext);

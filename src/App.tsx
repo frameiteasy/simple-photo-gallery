@@ -16,11 +16,17 @@ function App() {
     return albumid;
   }
 
+  const openGalleryViewer = (photos: Photo[], currentPhoto: number | undefined): JSX.Element => {
+    console.log('openGalleryViewer', photos, currentPhoto);
+    return (<div>Gallery Viewer</div>)
+  }
+
   const [context, setContext] = useState<AppDataType>(
     {
       albums: getAlbumsFile(),
       getAlbums: getAlbumsFile, 
       getPhotos: getPhotosFile,
+      openGallery: openGalleryViewer,
       getAlbumId
     }
   );
@@ -38,6 +44,10 @@ function App() {
             <Route path="/albums" element={<Albums albums={getAlbumsFile()}/>}></Route>
             <Route path="/gallery/:albumid" element={<Gallery />}></Route>
           </Routes>
+          <div id="app_gallery_viewer">
+            <span>&times;</span>
+            <div id="photography"></div>
+          </div>
         </div>
         <div id="app_footer">footer</div>
       </div>

@@ -1,4 +1,4 @@
-import { useAppContext } from '../../AppContext';
+
 import { useGalleryViewer } from './useGalleryViewer';
 
 type GalleryViewerProps = {

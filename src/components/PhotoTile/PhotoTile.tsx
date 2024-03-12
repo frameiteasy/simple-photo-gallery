@@ -11,14 +11,14 @@ type PhotoTileProps = {
   title?: string;
   date?: string;
   description?: string;
-  openSliderView: (photoFile: string) => void;
+  openSliderView: JSX.Element;
 };
 
 export const PhotoTile = (props: PhotoTileProps) => {
   return (
     <div
       className="photo_tile"
-      onClick={() => props.openSliderView(props.file)}
+      onClick={() => {console.log('click'); return (props.openSliderView)}}
     >
       <PictureTile bcolor={props.file} />
       <div className="photo_info">

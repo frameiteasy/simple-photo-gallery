@@ -1,8 +1,7 @@
 import photosArray from '../../data/photos.json';
 
 type ReturnUseGalleryType = {
-  openSliderView: (photoFile: string) => void;
-  getPhotos: () => Photo[] | undefined;
+  openSliderView: (photoFile: string) => void
 };
 
 export const useGallery = (): ReturnUseGalleryType => {
@@ -20,22 +19,7 @@ export const useGallery = (): ReturnUseGalleryType => {
     console.log('open slider view ', photoFile);
   };
 
-  const getPhotos = (): Photo[] | undefined => {
-    const galleryPath = window.location.href.split('/');
-    const albumid = galleryPath.pop();
-    const photosMap = createPhotosMap();
-    let photos: Photo[] | undefined = [];
-    if (albumid !== undefined) {
-      photos = photosMap.get(albumid);
-    } else {
-      photos = [];
-    }
-
-    return photos;
-  }
-
   return {
-    openSliderView,
-    getPhotos
+    openSliderView
   };
 };

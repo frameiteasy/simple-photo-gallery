@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { useAppContext } from '../../AppContext';
 import { PhotoTile } from '../PhotoTile/PhotoTile';
+import { PopupWindow } from '../PopupWindow/PopupWindow';
 import './Gallery.css';
-import { useGallery } from './useGallery';
 
 /*
   List of photos from the specific album
@@ -16,6 +17,7 @@ export const Gallery = () => {
   const albumid: string | undefined = context.getAlbumId();
 
   const photos: Photo[] | undefined = context.getPhotos(albumid);
+  const [isVisible, setIsVisible] = useState(false);
 
   const photoTiles = photos?.map((item, index) => {
     console.log('tile', context.openGallery(photos, index));
@@ -25,7 +27,7 @@ export const Gallery = () => {
         title={item.title}
         description={item.description}
         file={item.file}
-        openSliderView={context.openGallery(photos, index)}
+        openSliderView={setIsVisible}
       />
     )
   });
@@ -33,6 +35,9 @@ export const Gallery = () => {
   return (
     <div id="gallery">
       {photoTiles}
+      <PopupWindow isVisible={isVisible}>
+        <div id="photography" />
+      </PopupWindow>
     </div>
   );
 };

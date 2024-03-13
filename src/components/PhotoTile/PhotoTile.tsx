@@ -1,3 +1,4 @@
+import {Dispatch, SetStateAction} from 'react';
 import './PhotoTile.css';
 import { PictureTile } from '../PictureTile/PictureTile';
 
@@ -11,14 +12,14 @@ type PhotoTileProps = {
   title?: string;
   date?: string;
   description?: string;
-  openSliderView: JSX.Element;
+  openSliderView: Dispatch<SetStateAction<boolean>>;
 };
 
 export const PhotoTile = (props: PhotoTileProps) => {
   return (
     <div
       className="photo_tile"
-      onClick={() => {console.log('click'); return (props.openSliderView)}}
+      onClick={() => {console.log('click'); props.openSliderView(true)}}
     >
       <PictureTile bcolor={props.file} />
       <div className="photo_info">

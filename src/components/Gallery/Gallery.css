@@ -7,3 +7,9 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+#photography {
+  height: 600px;
+  width: 800px;
+  background-color: red;
+}

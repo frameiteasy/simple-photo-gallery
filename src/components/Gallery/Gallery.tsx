@@ -17,7 +17,7 @@ export const Gallery = () => {
   const albumid: string | undefined = context.getAlbumId();
 
   const photos: Photo[] | undefined = context.getPhotos(albumid);
-  const [isVisible, setIsVisible] = useState(false);
+  const [visibility, setVisibility] = useState(false);
 
   const photoTiles = photos?.map((item, index) => {
     console.log('tile', context.openGallery(photos, index));
@@ -27,7 +27,7 @@ export const Gallery = () => {
         title={item.title}
         description={item.description}
         file={item.file}
-        openSliderView={setIsVisible}
+        openSliderView={setVisibility}
       />
     )
   });
@@ -35,7 +35,7 @@ export const Gallery = () => {
   return (
     <div id="gallery">
       {photoTiles}
-      <PopupWindow isVisible={isVisible}>
+      <PopupWindow isVisible={visibility} setVisibility={setVisibility}>
         <div id="photography" />
       </PopupWindow>
     </div>

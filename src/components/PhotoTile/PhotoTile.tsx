@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction} from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import './PhotoTile.css';
 import { PictureTile } from '../PictureTile/PictureTile';
 

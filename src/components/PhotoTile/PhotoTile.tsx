@@ -8,18 +8,20 @@ import { PictureTile } from '../PictureTile/PictureTile';
 */
 
 type PhotoTileProps = {
+  id: number;
   file: string;
   title?: string;
   date?: string;
   description?: string;
   openSliderView: Dispatch<SetStateAction<boolean>>;
+  setCurrentPhotoId: Dispatch<SetStateAction<number>>;
 };
 
 export const PhotoTile = (props: PhotoTileProps) => {
   return (
     <div
       className="photo_tile"
-      onClick={() => {console.log('click'); props.openSliderView(true)}}
+      onClick={() => {console.log('click on photo', props.id); props.setCurrentPhotoId(props.id); props.openSliderView(true)}}
     >
       <PictureTile bcolor={props.file} />
       <div className="photo_info">

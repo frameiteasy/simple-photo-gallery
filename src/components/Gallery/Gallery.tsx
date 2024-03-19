@@ -3,6 +3,7 @@ import { useAppContext } from '../../AppContext';
 import { PhotoTile } from '../PhotoTile/PhotoTile';
 import { PopupWindow } from '../PopupWindow/PopupWindow';
 import './Gallery.css';
+import { GalleryViewer } from '../GalleryViewer/GalleryViewer';
 
 /*
   List of photos from the specific album
@@ -18,16 +19,19 @@ export const Gallery = () => {
 
   const photos: Photo[] | undefined = context.getPhotos(albumid);
   const [visibility, setVisibility] = useState(false);
+  const [currentPhotoId, setCurentPhotoId] = useState<number>(0);
 
   const photoTiles = photos?.map((item, index) => {
-    console.log('tile', context.openGallery(photos, index));
+    // console.log('tile', context.openGallery(photos, index));
     return (
       <PhotoTile 
+        id={index}
         key={index}
         title={item.title}
         description={item.description}
         file={item.file}
         openSliderView={setVisibility}
+        setCurrentPhotoId={setCurentPhotoId}
       />
     )
   });
@@ -36,7 +40,7 @@ export const Gallery = () => {
     <div id="gallery">
       {photoTiles}
       <PopupWindow isVisible={visibility} setVisibility={setVisibility}>
-        <div id="photography" />
+        <GalleryViewer photos={photos} index={currentPhotoId}/>
       </PopupWindow>
     </div>
   );

@@ -4,14 +4,14 @@
     align-items: center;
     justify-content: center;
     top: 0; left: 0;
-    background: rgba(0, 0, 0, .8);
+    background: rgba(0, 0, 0, .7);
     height: 100%;
     width: 100%;
     z-index: 100;
 }
 
 #popup span {
-position: absolute;
+    position: absolute;
     top: 0; right: 10px;
     font-size: 60px;
     font-weight: bolder;

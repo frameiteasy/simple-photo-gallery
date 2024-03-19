@@ -1,0 +1,28 @@
+#gallery_viewer {
+    width: 1100px;
+    height: 679px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#gallery_viewer_left {
+    position: absolute;
+    color: #fff;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 50px;
+    left: 10px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+#gallery_viewer_right {
+    position: absolute;
+    color: #fff;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 50px;
+    right: 10px;
+    z-index: 1;
+    cursor: pointer;
+}

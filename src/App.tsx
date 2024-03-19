@@ -7,7 +7,6 @@ import { AppContext, AppDataType } from './AppContext';
 import { useDataLoader } from './data/useDataLoader';
 
 function App() {
-  console.log('App');
   const {getAlbumsFile, getPhotosFile} = useDataLoader();
 
   const getAlbumId = (): string | undefined => {
@@ -17,7 +16,7 @@ function App() {
   }
 
   const openGalleryViewer = (photos: Photo[], currentPhoto: number | undefined): JSX.Element => {
-    console.log('openGalleryViewer', photos, currentPhoto);
+    // console.log('openGalleryViewer', photos, currentPhoto);
     return (<div>Gallery Viewer</div>)
   }
 

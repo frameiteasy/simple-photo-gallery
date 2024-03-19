@@ -1,5 +1,6 @@
-
-import { useGalleryViewer } from './useGalleryViewer';
+import { useState } from 'react';
+import { HiArrowCircleLeft, HiArrowCircleRight } from "react-icons/hi";
+import './GalleryViewer.css';
 
 type GalleryViewerProps = {
     photos: Array<Photo>;
@@ -7,12 +8,25 @@ type GalleryViewerProps = {
   };
 
 export const GalleryViewer = (props: GalleryViewerProps) => {
-    const { openGallery } = useGalleryViewer();
-    console.log('GalleryViewer')
+    const { photos, index } = props;
+    const [ curIndex, setCurIndex ] = useState(index);
 
-    return (
-        <div className="gallery_viewer" onClick={() => openGallery(props.photos, props.index)}>
-            Gallery Viewer
+    const photosNumber = photos.length;
+
+    const slideStyle = {
+        width: "100%",
+        height: "100%",
+        backgroundColor: `${photos[curIndex].file}`,
+        borderRadius: "10px",
+        backgroudPosition: "center",
+        backgroundSize: "cover"
+    }
+
+    return ( 
+        <div id="gallery_viewer">
+            <HiArrowCircleLeft id="gallery_viewer_left" onClick={() => {setCurIndex(Math.abs(curIndex-1) % photosNumber)}}/>
+            <div id="gallery_viewer_content" style={slideStyle} />
+            <HiArrowCircleRight id="gallery_viewer_right" onClick={() => setCurIndex((curIndex+1) % photosNumber)}/>
         </div>
     )
 }

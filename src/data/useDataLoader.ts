@@ -1,15 +1,43 @@
-import { Dispatch, SetStateAction, useCallback } from 'react';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import photosFile from './photos.json';
 import albumsFile from './albums.json';
 const albumsServer: string | undefined = process.env.REACT_APP_SERVER;
 
 type UseDataLoaderReturnType = {
+  albums: Album[];
   getAlbums: () => void;
   getAlbumsFile: () => Album[];
   getPhotosFile: (albumid: string | undefined) => Photo[];
+  fetchAlbums: () => Promise<Album[]>
 };
 
 export const useDataLoader = (): UseDataLoaderReturnType => {
+
+  const [albums, setAlbums] = useState<Album[]>([]);
+
+  console.log('albumsServer', albumsServer, process.env.REACT_APP_SERVER);
+
+  const fetchAlbums = async (): Promise<Album[]> => {
+    try {
+      const response = await fetch(`${albumsServer}/albums`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from the server');
+      }
+  
+      const data = await response.json();
+  
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
 
   const getAlbums = useCallback(async () => {
     try {
@@ -26,7 +54,7 @@ export const useDataLoader = (): UseDataLoaderReturnType => {
 
       const result = await response.json();
 
-      // setAlbums(result);
+      setAlbums(result);
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +92,8 @@ export const useDataLoader = (): UseDataLoaderReturnType => {
   }
 
   return {
+    fetchAlbums,
+    albums,
     getAlbums,
     getAlbumsFile,
     getPhotosFile

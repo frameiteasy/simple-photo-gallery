@@ -8,7 +8,6 @@ type AlbumTileProps = {
   description?: string;
   date?: string;
   cover?: string;
-  openGallery: (albumid: number) => void;
 };
 
 export const AlbumTile = (props: AlbumTileProps) => {

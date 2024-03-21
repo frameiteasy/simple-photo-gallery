@@ -42,8 +42,6 @@ export const Albums = (props: AlbumsProps) => {
     return <div>Loading...</div>
   }
 
-  console.log('fetched albums', fetchedData);
-
   const albumTiles = (fetchedData).map((item, index) => {
     return (
       <AlbumTile 

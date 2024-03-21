@@ -15,8 +15,6 @@ export const useDataLoader = (): UseDataLoaderReturnType => {
 
   const [albums, setAlbums] = useState<Album[]>([]);
 
-  console.log('albumsServer', albumsServer, process.env.REACT_APP_SERVER);
-
   const fetchAlbums = async (): Promise<Album[]> => {
     try {
       const response = await fetch(`${albumsServer}/albums`, {
@@ -62,7 +60,6 @@ export const useDataLoader = (): UseDataLoaderReturnType => {
 
   const getAlbumsFile = (): Album[] => {
     const albums: Album[] = albumsFile;
-    console.log('albums', albums);
     return albums;
   }
 

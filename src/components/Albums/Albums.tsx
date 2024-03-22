@@ -11,12 +11,7 @@ import { useDataLoader } from '../../data/useDataLoader';
     read a list of albums from the server and save in the context
 */
 
-type AlbumsProps = {
-  albums: Album[];
-};
-
-export const Albums = (props: AlbumsProps) => {
-  const { albums } = props;
+export const Albums = () => {
 
   const [fetchedData, setFetchedData] = useState<Album[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -42,6 +37,8 @@ export const Albums = (props: AlbumsProps) => {
     return <div>Loading...</div>
   }
 
+  console.log("fetched data", fetchedData);
+
   const albumTiles = (fetchedData).map((item, index) => {
     return (
       <AlbumTile 
@@ -49,7 +46,8 @@ export const Albums = (props: AlbumsProps) => {
         key={item.id}
         title={item.title}
         description={item.description}
-        cover={item.cover}/>
+        cover={item.cover}
+        photos={item.photos}/>
     )
   })
 

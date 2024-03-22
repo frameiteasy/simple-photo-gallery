@@ -7,7 +7,7 @@ import { AppContext, AppDataType } from './AppContext';
 import { useDataLoader } from './data/useDataLoader';
 
 function App() {
-  const {getAlbumsFile, getPhotosFile} = useDataLoader();
+  const {getPhotosFile} = useDataLoader();
 
   const getAlbumId = (): string | undefined => {
     const galleryPath = window.location.href.split('/');
@@ -22,8 +22,8 @@ function App() {
 
   const [context, setContext] = useState<AppDataType>(
     {
-      albums: getAlbumsFile(),
-      getAlbums: getAlbumsFile, 
+      albums: [],
+      getAlbums: () => [], 
       getPhotos: getPhotosFile,
       openGallery: openGalleryViewer,
       getAlbumId
@@ -39,9 +39,9 @@ function App() {
         </header>
         <div id="app_content">
           <Routes>
-            <Route path="/" element={<Albums albums={getAlbumsFile()}/>}></Route>
-            <Route path="/albums" element={<Albums albums={getAlbumsFile()}/>}></Route>
-            <Route path="/gallery/:albumid" element={<Gallery />}></Route>
+            <Route path="/" element={<Albums />}></Route>
+            <Route path="/albums" element={<Albums />}></Route>
+            <Route path="/gallery/:fphotos" element={<Gallery />}></Route>
           </Routes>
         </div>
         <div id="app_footer">footer</div>

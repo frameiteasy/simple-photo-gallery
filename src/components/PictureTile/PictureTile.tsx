@@ -11,11 +11,9 @@ type PictureTileProps = {
 
 export const PictureTile = (props: PictureTileProps) => {
   return (
-    // set photo image as the background
     <div
       className="picture_tile"
-      style={{ backgroundImage: `url(${props.bcolor})` }}
+      style={{ background: `url(${props.bcolor}) no-repeat center center / cover` }}
     />
-    // <div className="picture_tile" />
   );
 };

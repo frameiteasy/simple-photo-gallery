@@ -5,6 +5,7 @@ import './AlbumTile.css';
 type AlbumTileProps = {
   id: number,
   title: string;
+  photos: string;
   description?: string;
   date?: string;
   cover?: string;
@@ -12,7 +13,7 @@ type AlbumTileProps = {
 
 export const AlbumTile = (props: AlbumTileProps) => {
   const navigate = useNavigate();
-  const galleryUrl = '/gallery/' + props.id;
+  const galleryUrl = '/gallery/' + props.photos;
 
   return (
     <div className="album_tile" onClick={() => navigate(galleryUrl)}>

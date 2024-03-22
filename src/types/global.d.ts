@@ -16,6 +16,6 @@ declare global {
     date: string;
     description: string;
     cover?: string;
-    photos?: Photo[];
+    photos: string;
   };
 }

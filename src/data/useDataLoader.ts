@@ -6,9 +6,10 @@ const albumsServer: string | undefined = process.env.REACT_APP_SERVER;
 type UseDataLoaderReturnType = {
   albums: Album[];
   getAlbums: () => void;
-  getAlbumsFile: () => Album[];
+  // getAlbumsFile: () => Album[];
   getPhotosFile: (albumid: string | undefined) => Photo[];
   fetchAlbums: () => Promise<Album[]>
+  fetchPhotos: (photosFile: string) => Promise<Photo[]>
 };
 
 export const useDataLoader = (): UseDataLoaderReturnType => {
@@ -37,6 +38,28 @@ export const useDataLoader = (): UseDataLoaderReturnType => {
     }
   }
 
+  const fetchPhotos = async (photosFile: string): Promise<Photo[]> => {
+    try {
+      const response = await fetch(`${albumsServer}/photos/desc/${photosFile}.json`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from the server');
+      }
+  
+      const data = await response.json();
+  
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }    
+  }
+
   const getAlbums = useCallback(async () => {
     try {
       const response = await fetch(`${albumsServer}/albums`, {
@@ -58,10 +81,10 @@ export const useDataLoader = (): UseDataLoaderReturnType => {
     }
   }, []);
 
-  const getAlbumsFile = (): Album[] => {
-    const albums: Album[] = albumsFile;
-    return albums;
-  }
+  // const getAlbumsFile = (): Album[] => {
+  //   const albums: Album[] = albumsFile;
+  //   return albums;
+  // }
 
   const buildPhotosMap = (): Map<string, Photo[]> => {
     const photosMap = new Map();
@@ -90,9 +113,10 @@ export const useDataLoader = (): UseDataLoaderReturnType => {
 
   return {
     fetchAlbums,
+    fetchPhotos,
     albums,
     getAlbums,
-    getAlbumsFile,
+    // getAlbumsFile,
     getPhotosFile
   };
 };

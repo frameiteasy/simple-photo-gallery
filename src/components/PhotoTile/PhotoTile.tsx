@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
 import './PhotoTile.css';
 import { PictureTile } from '../PictureTile/PictureTile';
+import { useDataLoader } from '../../data/useDataLoader';
+
 
 /*
   When click on the tile the slider view is open with the current photo
@@ -18,12 +20,15 @@ type PhotoTileProps = {
 };
 
 export const PhotoTile = (props: PhotoTileProps) => {
+const { getSmallPhoto } = useDataLoader();
+console.log('photo path', getSmallPhoto(props.file));
+
   return (
     <div
       className="photo_tile"
       onClick={() => {console.log('click on photo', props.id); props.setCurrentPhotoId(props.id); props.openSliderView(true)}}
     >
-      <PictureTile bcolor={props.file} />
+      <PictureTile bcolor={getSmallPhoto(props.file)} />
       <div className="photo_info">
         <div className="photo_title">{props.title}</div>
         <div className="photo_date">{props.date}</div>

@@ -51,7 +51,7 @@ export const Gallery = () => {
 
   console.log('fetched photos', fetchedData);
 
-  const photoTiles = photos?.map((item, index) => {
+  const photoTiles = fetchedData?.map((item, index) => {
     return (
       <PhotoTile 
         id={index}
@@ -69,7 +69,7 @@ export const Gallery = () => {
     <div id="gallery">
       {photoTiles}
       <PopupWindow isVisible={visibility} setVisibility={setVisibility}>
-        <GalleryViewer photos={photos} index={currentPhotoId}/>
+        <GalleryViewer photos={fetchedData} index={currentPhotoId}/>
       </PopupWindow>
     </div>
   );

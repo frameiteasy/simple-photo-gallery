@@ -10,6 +10,8 @@ type UseDataLoaderReturnType = {
   getPhotosFile: (albumid: string | undefined) => Photo[];
   fetchAlbums: () => Promise<Album[]>
   fetchPhotos: (photosFile: string) => Promise<Photo[]>
+  getSmallPhoto: (photo: string) => string;
+  getBigPhoto: (photo: string) => string;
 };
 
 export const useDataLoader = (): UseDataLoaderReturnType => {
@@ -81,10 +83,13 @@ export const useDataLoader = (): UseDataLoaderReturnType => {
     }
   }, []);
 
-  // const getAlbumsFile = (): Album[] => {
-  //   const albums: Album[] = albumsFile;
-  //   return albums;
-  // }
+  const getSmallPhoto = (photo: string): string => {
+    return `${albumsServer}/photos/small/${photo}`
+  }
+
+  const getBigPhoto = (photo: string): string => {
+    return `${albumsServer}/photos/big/${photo}`
+  }
 
   const buildPhotosMap = (): Map<string, Photo[]> => {
     const photosMap = new Map();
@@ -117,6 +122,8 @@ export const useDataLoader = (): UseDataLoaderReturnType => {
     albums,
     getAlbums,
     // getAlbumsFile,
-    getPhotosFile
+    getPhotosFile,
+    getSmallPhoto,
+    getBigPhoto
   };
 };

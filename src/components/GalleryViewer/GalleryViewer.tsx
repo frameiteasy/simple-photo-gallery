@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { HiArrowCircleLeft, HiArrowCircleRight } from "react-icons/hi";
 import './GalleryViewer.css';
+import { useDataLoader } from '../../data/useDataLoader';
 
 type GalleryViewerProps = {
     photos: Array<Photo>;
@@ -9,14 +10,17 @@ type GalleryViewerProps = {
 
 export const GalleryViewer = (props: GalleryViewerProps) => {
     const { photos, index } = props;
+    const { getBigPhoto } = useDataLoader();
     const [ curIndex, setCurIndex ] = useState(index);
 
     const photosNumber = photos.length;
 
+    console.log('photos number', photos, photosNumber);
+
     const slideStyle = {
         width: "100%",
         height: "100%",
-        backgroundColor: `${photos[curIndex].file}`,
+        background: `url(${getBigPhoto(photos[curIndex].file)}) no-repeat center center / cover` ,
         borderRadius: "10px",
         backgroudPosition: "center",
         backgroundSize: "cover"

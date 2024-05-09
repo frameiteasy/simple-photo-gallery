@@ -6,6 +6,7 @@ import './Gallery.css';
 import { GalleryViewer } from '../GalleryViewer/GalleryViewer';
 import { useParams } from 'react-router';
 import { useDataLoader } from '../../data/useDataLoader';
+import { ViewerArrowsWrapper } from '../ViewerArrowsWrapper/ViewerArrowsWrapper';
 
 /*
   List of photos from the specific album
@@ -29,6 +30,10 @@ export const Gallery = () => {
   const { fphotos } = useParams();
   console.log('photos', fphotos);
 
+  const changeCurrentPhotoId = (newId: number): void => {
+    setCurentPhotoId(currentPhotoId);
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -49,8 +54,6 @@ export const Gallery = () => {
     return <div>Loading...</div>
   }
 
-  console.log('fetched photos', fetchedData);
-
   const photoTiles = fetchedData?.map((item, index) => {
     return (
       <PhotoTile 
@@ -60,16 +63,24 @@ export const Gallery = () => {
         description={item.description}
         file={item.file}
         openSliderView={setVisibility}
-        setCurrentPhotoId={setCurentPhotoId}
+        // setCurrentPhotoId={setCurentPhotoId}
+        setCurrentPhotoId={changeCurrentPhotoId}
       />
     )
   });
 
+/*
+      <PopupWindow isVisible={visibility} setVisibility={setVisibility}>
+        <GalleryViewer photos={fetchedData} index={currentPhotoId}/>
+      </PopupWindow>
+*/
+
   return (
     <div id="gallery">
       {photoTiles}
+
       <PopupWindow isVisible={visibility} setVisibility={setVisibility}>
-        <GalleryViewer photos={fetchedData} index={currentPhotoId}/>
+          <GalleryViewer photos={fetchedData} index={currentPhotoId}/>
       </PopupWindow>
     </div>
   );

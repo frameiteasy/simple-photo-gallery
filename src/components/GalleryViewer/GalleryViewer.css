@@ -1,28 +1,39 @@
 #gallery_viewer {
+    display: flex;
+    flex-direction: row;
     width: 1100px;
     height: 679px;
-    box-sizing: border-box;
-    position: relative;
+
+    
+}
+
+#gallery_viewer_wrapper {
+    background-color: pink;
+    z-index: 100;
+}
+
+.gallery_viewer_arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #gallery_viewer_left {
-    position: absolute;
+    width: 70px;
     color: #fff;
     top: 50%;
     transform: translate(0, -50%);
     font-size: 50px;
-    left: 10px;
     z-index: 1;
     cursor: pointer;
 }
 
 #gallery_viewer_right {
-    position: absolute;
+    width: 70px;
     color: #fff;
     top: 50%;
     transform: translate(0, -50%);
     font-size: 50px;
-    right: 10px;
     z-index: 1;
     cursor: pointer;
 }

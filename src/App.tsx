@@ -5,6 +5,7 @@ import { Albums } from './components/Albums/Albums';
 import { Gallery } from './components/Gallery/Gallery';
 import { AppContext, AppDataType } from './AppContext';
 import { useDataLoader } from './data/useDataLoader';
+import { Home } from './components/Home/Home';
 
 function App() {
   const {getPhotosFile} = useDataLoader();
@@ -39,7 +40,7 @@ function App() {
         </header>
         <div id="app_content">
           <Routes>
-            <Route path="/" element={<Albums />}></Route>
+            <Route path="/" element={<Home />}></Route>
             <Route path="/albums" element={<Albums />}></Route>
             <Route path="/gallery/:fphotos" element={<Gallery />}></Route>
           </Routes>

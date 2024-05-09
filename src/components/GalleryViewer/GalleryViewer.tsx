@@ -15,7 +15,7 @@ export const GalleryViewer = (props: GalleryViewerProps) => {
 
     const photosNumber = photos.length;
 
-    console.log('photos number', photos, photosNumber);
+    console.log('photos number', curIndex, photos, photosNumber);
 
     const slideStyle = {
         width: "100%",
@@ -28,9 +28,24 @@ export const GalleryViewer = (props: GalleryViewerProps) => {
 
     return ( 
         <div id="gallery_viewer">
-            <HiArrowCircleLeft id="gallery_viewer_left" onClick={() => {setCurIndex(Math.abs(curIndex-1) % photosNumber)}}/>
-            <div id="gallery_viewer_content" style={slideStyle} />
-            <HiArrowCircleRight id="gallery_viewer_right" onClick={() => setCurIndex((curIndex+1) % photosNumber)}/>
+
+            <div className="gallery_viewer_arrow">
+                <div>
+                    <HiArrowCircleLeft id="gallery_viewer_left" onClick={() => {setCurIndex(Math.abs(curIndex-1) % photosNumber)}}/>
+                </div>  
+            </div>
+            
+            <div style={slideStyle} />
+
+            <div className="gallery_viewer_arrow">
+                <div>
+                    <HiArrowCircleRight id="gallery_viewer_right" onClick={() => setCurIndex((curIndex+1) % photosNumber)}/>
+                </div>
+            </div> 
         </div>
+
+        // <div id="gallery_viewer">
+        //     <div id="gallery_viewer_content" style={slideStyle} />
+        // </div>
     )
 }

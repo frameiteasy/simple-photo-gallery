@@ -16,7 +16,8 @@ type PhotoTileProps = {
   date?: string;
   description?: string;
   openSliderView: Dispatch<SetStateAction<boolean>>;
-  setCurrentPhotoId: Dispatch<SetStateAction<number>>;
+  // setCurrentPhotoId: Dispatch<SetStateAction<number>>;
+  setCurrentPhotoId: (newId: number) => void;
 };
 
 export const PhotoTile = (props: PhotoTileProps) => {

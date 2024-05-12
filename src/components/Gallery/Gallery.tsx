@@ -31,7 +31,7 @@ export const Gallery = () => {
   console.log('photos', fphotos);
 
   const changeCurrentPhotoId = (newId: number): void => {
-    setCurentPhotoId(currentPhotoId);
+    setCurentPhotoId(newId);
   }
 
   useEffect(() => {
